@@ -4,7 +4,7 @@ const userMap = {};
 const socketConnection = (server) => {
   const io = new Server(server, {
     cors: {
-      origin: "http://localhost:5173",
+      origin: process.env.NODE_CORS_ORIGIN,
       methods: ["GET", "POST"],
       credentials: true,
     },

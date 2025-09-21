@@ -18,10 +18,7 @@ const port = process.env.PORT || 4001;
 app.use(express.json());
 app.use(
   cors({
-    origin:
-      process.env.NODE_ENV_ORG === "dev"
-        ? "http://localhost:5173"
-        : "https://chat-app-frontend-utlu.vercel.app",
+    origin: process.env.NODE_CORS_ORIGIN,
     credentials: true,
   })
 );
