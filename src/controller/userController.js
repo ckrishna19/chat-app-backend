@@ -144,9 +144,8 @@ export const verifyOTP = asyncHandler(async (req, res) => {
   const headersOTP = req.headers["otp"];
 
   const valid = time + 5 * 60 * 1000;
-  console.log(otp === headersOTP);
 
-  if (!valid >= Date.now()) {
+  if (valid <= Date.now()) {
     throw new ApiError(403, "Otp expired please request once..");
   }
   if (headersOTP !== otp) {
