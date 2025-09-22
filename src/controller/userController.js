@@ -124,12 +124,12 @@ export const sendOTP = asyncHandler(async (req, res) => {
     throw new ApiError(403, "This is not valid credentials..");
   }
   const otp = generateOTP(6);
-  const options = {
-    email: registeredUser.email,
+
+  await sendMail({
+    to: registeredUser.email,
     subject: "OTP for password change",
     text: `Hi ${registeredUser.firstName} your opt is ${otp} and valid for only 5 min.`,
-  };
-  await sendMail(options);
+  });
   return res.status(201).json(
     new ApiResponse(201, "OTP sent to your Email please check", true, {
       otp,
