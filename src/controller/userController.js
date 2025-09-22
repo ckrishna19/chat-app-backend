@@ -25,7 +25,7 @@ export const registerUser = asyncHandler(async (req, res) => {
   return res
     .status(201)
     .cookie("token", `Bearer ${token}`, {
-      sameSite: false,
+      sameSite: "none",
       httpOnly: true,
       secure: true,
     })
@@ -52,7 +52,7 @@ export const loginUser = asyncHandler(async (req, res) => {
   return res
     .status(201)
     .cookie("token", `Bearer ${token}`, {
-      sameSite: false,
+      sameSite: "none",
       httpOnly: true,
       secure: true,
     })
@@ -177,7 +177,7 @@ export const resetPassword = asyncHandler(async (req, res) => {
   return res
     .status(201)
     .cookie("token", `Bearer ${token}`, {
-      sameSite: false,
+      sameSite: "none",
       httpOnly: true,
       secure: true,
     })
