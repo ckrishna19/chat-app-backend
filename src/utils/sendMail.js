@@ -2,12 +2,11 @@ import nodemailer from "nodemailer";
 
 const sendMail = async (options) => {
   const transport = nodemailer.createTransport({
-    host: "smtp.gmail.com",
+    host: "smtp.sendgrid.net",
     port: 587,
-    secure: false,
     auth: {
-      user: process.env.AUTH_EMAIL,
-      pass: process.env.AUTH_PASSWORD,
+      user: "apikey", // literally "apikey"
+      pass: process.env.SENDGRID_API_KEY,
     },
   });
 
@@ -20,3 +19,10 @@ const sendMail = async (options) => {
 };
 
 export default sendMail;
+// host: "smtp.gmail.com",
+// port: 587,
+// secure: false,
+// auth: {
+//   user: process.env.AUTH_EMAIL,
+//   pass: process.env.AUTH_PASSWORD,
+// },
